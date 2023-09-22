@@ -1,8 +1,37 @@
 <html>
 <head>
-    <title>My Website</title>
+    <title>Susan Sazz</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+        }
+
+        .row {
+            height: 100%;
+            flex: 1;
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome To My Website!</h1>
+    <div class="container">
+        <div class="row" style="background:blue">
+
+        </div>
+        <div class="row" style="background:red">
+
+        </div>
+    </div>
 </body>
 </html>
