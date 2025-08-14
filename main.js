@@ -232,6 +232,7 @@ function getVisibleElements(container) {
 
         // Check horizontal visibility (you can also check vertical if needed)
         const horizontallyVisible =
+            childRect.left > 0 &&
             childRect.left < containerRect.right &&
             childRect.right > containerRect.left;
 

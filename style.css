@@ -63,6 +63,7 @@
     font-family: OsFont, Arial, sans-serif;
     transition: background-color 100ms linear;
     transition: color 100ms linear;
+    transition: stroke 100ms linear;
 }
 
 ::selection, ::-moz-selection {
@@ -240,7 +241,7 @@ button {
     color: var(--background-color);
     border: none;
     border-radius: 10px;
-    padding: 15px 15px;
+    padding: 1rem;
     text-wrap: nowrap;
     font-weight: 600;
 
@@ -249,7 +250,7 @@ button {
         background-color: var(--main-color);
     }
 
-    &:focus {
+    &:focus-visible {
         outline: var(--main-color) solid .2rem;
     }
 }
@@ -684,11 +685,26 @@ table {
 
     button {
         position: absolute;
-        top: 50%;
+        top: calc(50% - 2rem);
         background: transparent;
 
         &:last-of-type {
             right: 0;
+        }
+
+        svg {
+            width: 2rem;
+            height: 2rem;
+
+            path {
+                stroke: var(--main-color);
+            }
+        }
+        
+        &:hover {
+            svg path {
+                stroke: var(--highlight-color);
+            }
         }
     }
     
@@ -699,7 +715,13 @@ table {
         scroll-behavior: smooth;
         display: flex;
         aspect-ratio: 16/9;
-        border-radius: 20px;
+        border-radius: 1rem;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar { 
+            display: none;
+        }
 
         div {
             display: block;
@@ -708,12 +730,6 @@ table {
             min-width: 100%;
             background-size: cover;
             background-position: center;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-
-            &::-webkit-scrollbar { 
-                display: none;
-            }
         }
     }
 }
