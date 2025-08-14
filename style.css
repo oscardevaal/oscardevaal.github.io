@@ -685,6 +685,7 @@ table {
     button {
         position: absolute;
         top: 50%;
+        background: transparent;
 
         &:last-of-type {
             right: 0;
@@ -700,12 +701,19 @@ table {
         aspect-ratio: 16/9;
         border-radius: 20px;
 
-        img {
+        div {
             display: block;
             max-width: 100%;
             scroll-snap-align: start;
             min-width: 100%;
-            object-fit: cover;
+            background-size: cover;
+            background-position: center;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+
+            &::-webkit-scrollbar { 
+                display: none;
+            }
         }
     }
 }
