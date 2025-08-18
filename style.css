@@ -55,6 +55,8 @@
     --main-color: #4a4a4a;
     --secondairy-color: #4f3c52;
     --highlight-color: #fbe26c;
+    --popup-color: #EEEEEE;
+    --popup-highlight-color: #181818;
 }
 
 /* Containers */
@@ -148,17 +150,48 @@ header {
 }
 
 dialog {
-    border-radius: 2rem;
-    border: #bdc1ce .2rem solid;
+    background-color: var(--popup-color);
+    border-radius: 1rem;
+    border: var(--popup-color) .2rem solid;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    min-height: 350px;
-    padding: 20px 30px;
+    min-height: 25rem;
+    padding: 1.5rem;
+    overflow: visible;
+    position: relative;
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(5px);
+    }
+
+    button {
+        background: transparent;
+        position: absolute;
+        top: -3rem;
+        right: -3rem;
+        border-radius: 50%;
+        padding: 0;
+
+        svg {
+            width: 3rem;
+            height: 3rem;
+
+            > * {
+                stroke: var(--text-color);
+            }
+        }
+
+        &:hover, &:focus {
+            background: transparent;
+            outline: none;
+
+            svg > * {
+                stroke: var(--highlight-color);
+            }
+        }
+    }
 }
 
-dialog::backdrop {
-    background-color: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(5px);
-}
 
 /* Components */
 h1 {
@@ -194,6 +227,15 @@ a {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.8125rem;
+    gap: 0.25rem;
+
+    svg {
+        width: 1.5rem;
+
+        path {
+            fill: var(--text-color);
+        }
+    }
 
     &::after {
         content: '';
@@ -924,5 +966,14 @@ footer {
     header .header,
     .content {
         padding: 0 0.8rem;
+    }
+
+    dialog {
+        margin-bottom: 1rem;
+
+        button {
+            top: -3.5rem;
+            right: -0.25rem;
+        }
     }
 }

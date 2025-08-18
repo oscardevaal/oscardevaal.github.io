@@ -9,12 +9,13 @@ document.addEventListener('DOMContentLoaded', function () {
 		  modal.showModal();
 	 });
 
-	 modal.querySelector("#okBtn").addEventListener("click", () => {
-		  modal.close();
+    modal.querySelector(".close-dialog").addEventListener("click", (event) => {
+        event.target.parentElement.parentElement.close();
 	 });
 
 	 switchThemeBtn.addEventListener("click", () => {
-		  const root = document.documentElement;
+        const root = document.documentElement;
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
 
 		  darkTheme = !darkTheme;
 
@@ -22,21 +23,27 @@ document.addEventListener('DOMContentLoaded', function () {
 		  if (darkTheme) {
 				// https://www.color-hex.com/color-palette/1044414
 				switchThemeBtn.innerText = "Light theme";
-				root.style.setProperty('--background-color', '#1c1b16');
+            metaThemeColor.setAttribute('content', '#1c1b16');
+            root.style.setProperty('--background-color', '#1c1b16');
 				root.style.setProperty('--text-color', '#ebeae5');
 				root.style.setProperty('--main-color', '#b6b093');
 				root.style.setProperty('--secondairy-color', '#b8a54b');
 				root.style.setProperty('--highlight-color', '#33312a');
+            root.style.setProperty('--popup-color', '#EEEEEE');
+            root.style.setProperty('--popup-highlight-color', '#181818');
 
 				modeSelect.classList.remove("day");
 		  }
 		  else {
 				switchThemeBtn.innerText = "Dark theme";
+            metaThemeColor.setAttribute('content', '#f4f4f4');
 				root.style.setProperty('--background-color', '#f4f4f4');
 				root.style.setProperty('--text-color', '#2f2f2f');
 				root.style.setProperty('--main-color', '#4a4a4a');
 				root.style.setProperty('--secondairy-color', '#4f3c52');
-				root.style.setProperty('--highlight-color', '#fbe26c');
+            root.style.setProperty('--highlight-color', '#fbe26c');
+            root.style.setProperty('--popup-color', '#EEEEEE');
+            root.style.setProperty('--popup-highlight-color', '#181818');
 
 				modeSelect.classList.add("day");
         }
@@ -83,6 +90,10 @@ function skip(event) {
 
             progress.dataset.dashoffset = dashoffset;
             audio.currentTime = audio.duration * (percentages[i] / 100);
+            //TODO: if IOS then play file
+            //audio.play().then(() => {
+            //    audio.currentTime = audio.duration * (percentages[i] / 100);
+            //});
 
             if (playButton.classList.contains("stopped")) {
                 progress.style.strokeDashoffset = dashoffset;
@@ -244,3 +255,8 @@ function getVisibleElements(container) {
         return horizontallyVisible && verticallyVisible;
     });
 }
+
+window.addEventListener('resize', () => {
+    document.querySelector('.gallery').scrollLeft += 1;
+    document.querySelector('.gallery').scrollLeft -= 1;
+});
