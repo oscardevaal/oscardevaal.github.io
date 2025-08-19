@@ -1,15 +1,10 @@
 let darkTheme = false;
 
 document.addEventListener('DOMContentLoaded', function () {
-	 const modal = document.querySelector("dialog");
 	 const switchThemeBtn = document.querySelector("#switchTheme");
 	 const modeSelect = document.querySelector("#mode-select");
 
-	 document.querySelector("#open-dialog").addEventListener("click", () => {
-		  modal.showModal();
-	 });
-
-    modal.querySelector(".close-dialog").addEventListener("click", (event) => {
+    document.querySelector(".close-dialog").addEventListener("click", (event) => {
         event.target.parentElement.parentElement.close();
 	 });
 
@@ -60,6 +55,10 @@ document.addEventListener('DOMContentLoaded', function () {
 		  }
 	 });
 });
+
+function openDialog(dialogSelector) {
+    document.querySelector(dialogSelector).showModal();
+}
 
 //audio
 var xValues;

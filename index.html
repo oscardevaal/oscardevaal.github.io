@@ -33,36 +33,33 @@
             </div>
         </div>
     </header>
+    <div class="banner-container">
+        <div class="background">
+            <div class="container">
+                <div class="content">
+                    <div class="item-3">
+                        <h2>Welcome</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="content">
             <div class="item-6">
                 <h2>Popup modal</h2>
                 <p>Click the button below to open the native dialog modal</p>
 
-                <button id="open-dialog">Open Modal Dialog</button>
-                <dialog>
-                    <h2>Dialog</h2>
+                <button onclick="openDialog('#dialog-1')">Open Modal Dialog #1</button>
+                <button onclick="openDialog('#dialog-2')">Open Modal Dialog #2</button>
 
-                    <p>Click the button below to close the dialog modal</p>
-
-                    <div id="okBtn" class="button">
-                        <div class="bg"></div>
-                        <div class="svg">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M21.6353 12.8965C21.6353 17.8675 17.6063 21.8965 12.6353 21.8965C7.66425 21.8965 3.63525 17.8675 3.63525 12.8965C3.63525 7.92548 7.66425 3.89648 12.6353 3.89648C17.6063 3.89648 21.6353 7.92548 21.6353 12.8965Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M11.5763 9.95455L15.4583 12.2506C15.9493 12.5406 15.9493 13.2516 15.4583 13.5416L11.5763 15.8376C11.0763 16.1336 10.4443 15.7726 10.4443 15.1916V10.6006C10.4443 10.0196 11.0763 9.65855 11.5763 9.95455Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <span>Close dialog</span>
-                    </div>
-
-                    <button class="close-dialog">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="12" r="10" stroke-width="1.5" />
-                            <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                    </button>
-                </dialog>
+                <p>
+                    TODO:
+                    <ul>
+                        <li>banner</li>
+                        <li>drawer in nav menu</li>
+                    </ul>
+                </p>
             </div>
 
             <div class="item-6">
@@ -142,6 +139,16 @@
             <div class="item-4">
                 <h2>Buttons</h2>
                 <p>Different button styles</p>
+                <button class="netflix-button">
+                    <div class="bg"></div>
+                    <div class="svg">
+                        <svg viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21.6353 12.8965C21.6353 17.8675 17.6063 21.8965 12.6353 21.8965C7.66425 21.8965 3.63525 17.8675 3.63525 12.8965C3.63525 7.92548 7.66425 3.89648 12.6353 3.89648C17.6063 3.89648 21.6353 7.92548 21.6353 12.8965Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M11.5763 9.95455L15.4583 12.2506C15.9493 12.5406 15.9493 13.2516 15.4583 13.5416L11.5763 15.8376C11.0763 16.1336 10.4443 15.7726 10.4443 15.1916V10.6006C10.4443 10.0196 11.0763 9.65855 11.5763 9.95455Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>Netflix button</span>
+                </button>
             </div>
 
             <div class="item-4">
@@ -260,6 +267,47 @@
         </div>
     </div>
 
+    <dialog id="dialog-1">
+        <h2>Dialog</h2>
+
+        <p>Click the button below to close the dialog modal</p>
+
+        <button id="okBtn" class="netflix-button">
+            <div class="bg"></div>
+            <div class="svg">
+                <svg viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21.6353 12.8965C21.6353 17.8675 17.6063 21.8965 12.6353 21.8965C7.66425 21.8965 3.63525 17.8675 3.63525 12.8965C3.63525 7.92548 7.66425 3.89648 12.6353 3.89648C17.6063 3.89648 21.6353 7.92548 21.6353 12.8965Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M11.5763 9.95455L15.4583 12.2506C15.9493 12.5406 15.9493 13.2516 15.4583 13.5416L11.5763 15.8376C11.0763 16.1336 10.4443 15.7726 10.4443 15.1916V10.6006C10.4443 10.0196 11.0763 9.65855 11.5763 9.95455Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+            <span>Close dialog</span>
+        </button>
+
+        <button class="close-dialog">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke-width="1.5" />
+                <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+        </button>
+    </dialog>
+
+    <dialog id="dialog-2">
+        <div class="dialog-container">
+            <div class="dialog-image" style="background-image: url(assets/images/jungfrau.jpg)"></div>
+            <div class="dialog-content">
+                <h2>Dialog 2</h2>
+                <p>Test content</p>
+            </div>
+        </div>
+
+        <button class="close-dialog">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke-width="1.5" />
+                <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+        </button>
+    </dialog>
+
     <footer>
         <div class="footer">
             <h3>frontend<span>showcase</span></h3>
@@ -268,7 +316,7 @@
             </p>
         </div>
     </footer>
-    
+
     <script src="main.js"></script>
 </body>
 </html>

@@ -107,6 +107,33 @@ header {
     }
 }
 
+.banner-container {
+    width: 100%;
+    height: 30rem;
+    overflow: hidden;
+    position: relative;
+
+    .background {
+        height: 1px;
+        background: url(assets/images/jungfrau.jpg) no-repeat center center;
+        border-top: 30rem solid transparent;
+        border-right: 30rem solid var(--background-color);
+        width: 75vw;
+
+        .container {
+            position:absolute;
+            top: 0;
+            width: 100vw;
+            
+            .content {
+                justify-content: end;
+                align-content: center;
+                text-align: right;
+            }
+        }
+    }
+}
+
 .container {
     flex: 1;
     height: 100%;
@@ -139,6 +166,11 @@ header {
     width: 100%;
 }
 
+.item-3 {
+    flex: 0 0 auto;
+    width: calc(25% - 2rem);
+}
+
 .item-4 {
     flex: 0 0 auto;
     width: calc(33.33333% - 1.5rem);
@@ -164,7 +196,7 @@ dialog {
         backdrop-filter: blur(5px);
     }
 
-    button {
+    button.close-dialog {
         background: transparent;
         position: absolute;
         top: -3rem;
@@ -192,6 +224,31 @@ dialog {
     }
 }
 
+#dialog-2 {
+    width: 80vw;
+    max-height: 80vw;
+    aspect-ratio: 16/9;
+    padding: 0;
+    border: 0;
+
+    .dialog-container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+
+        > div {
+            width: 50%;
+        }
+
+        .dialog-image {
+            border-radius: 1rem 0 0 1rem;
+        }
+
+        .dialog-content {
+            padding: 1.5rem;
+        }
+    }
+}
 
 /* Components */
 h1 {
@@ -301,18 +358,15 @@ button {
     display: none;
 }
 
-.button {
+.netflix-button {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 56px;
+    height: 4rem;
     background-color: #222222;
     position: relative;
-    /*border-radius: 32px;*/
     overflow: hidden;
-    font-size: 18px;
-    cursor: pointer;
     
     .bg {
         background: #F0F0F0;
@@ -321,10 +375,10 @@ button {
         width: 100%;
         height: 100%;
         transform: translateX(-100%);
-        transition: transform .25s linear;
+        transition: transform .35s linear;
     }
 
-    &:hover .bg {
+    &:hover .bg, &:focus .bg {
         transform: none;
     }
 
@@ -334,7 +388,9 @@ button {
     }
 
     .svg {
-        margin-right: 10px;
+        width: 2rem;
+        height: 2rem;
+        margin-right: 0.75rem;
         mix-blend-mode: difference;
         line-height: 0;
     }
@@ -929,8 +985,21 @@ footer {
 
 /* Media queries */
 
+/* Extra large */
+
+@media (min-width: 2400px) {
+    .banner-container .background {
+        background: url(assets/images/jungfrau.jpg) repeat center center;
+        width: 65vw;
+    }
+}
+
 /* Large */
 @media (max-width: 992px) {
+    .item-3 {
+        width: 50%;
+    }
+
     .item-4 {
         flex: 1 0 auto;
         width: 100%;
@@ -955,6 +1024,14 @@ footer {
 
 /* Small */
 @media (max-width: 576px) {
+    .banner-container .background .container .content {
+        align-content: end;
+    }
+
+    .item-3 {
+        height: 10rem;
+    }
+
     h1 {
         font-size: 1.5rem;
 
@@ -971,9 +1048,27 @@ footer {
     dialog {
         margin-bottom: 1rem;
 
-        button {
+        button.close-dialog {
             top: -3.5rem;
             right: -0.25rem;
+        }
+    }
+
+    #dialog-2 {
+        aspect-ratio: 9/16;
+        max-height: unset;
+
+        .dialog-container {
+            flex-direction: column;
+
+            > div {
+                width: 100%;
+                height: 50%;
+            }
+
+            .dialog-image {
+                border-radius: 1rem 1rem 0 0;
+            }
         }
     }
 }
