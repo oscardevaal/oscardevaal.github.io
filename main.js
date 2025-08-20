@@ -4,9 +4,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	 const switchThemeBtn = document.querySelector("#switchTheme");
 	 const modeSelect = document.querySelector("#mode-select");
 
-    document.querySelector(".close-dialog").addEventListener("click", (event) => {
-        event.target.parentElement.parentElement.close();
-	 });
+    document.querySelectorAll(".close-dialog").forEach(closeDialog => {
+        closeDialog.addEventListener("click", (event) => {
+            event.target.parentElement.parentElement.close();
+        });
+    });
 
 	 switchThemeBtn.addEventListener("click", () => {
         const root = document.documentElement;

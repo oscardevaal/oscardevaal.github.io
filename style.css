@@ -226,7 +226,8 @@ dialog {
 
 #dialog-2 {
     width: 80vw;
-    max-height: 80vw;
+    max-width: 1366px;
+    max-height: 60vw;
     aspect-ratio: 16/9;
     padding: 0;
     border: 0;
