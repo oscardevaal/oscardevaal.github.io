@@ -989,7 +989,9 @@ footer {
 
 @media (min-width: 2400px) {
     .banner-container .background {
-        background: url(assets/images/jungfrau.jpg) repeat center center;
+        background-image: url(assets/images/jungfrau.jpg);
+        background-size: 85vw;
+        background-position: center;
         width: 65vw;
     }
 }
