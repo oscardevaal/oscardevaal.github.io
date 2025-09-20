@@ -4,12 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	 const switchThemeBtn = document.querySelector("#switchTheme");
 	 const modeSelect = document.querySelector("#mode-select");
 
-    document.querySelectorAll(".close-dialog").forEach(closeDialog => {
-        closeDialog.addEventListener("click", (event) => {
-            event.target.parentElement.parentElement.close();
-        });
-    });
-
 	 switchThemeBtn.addEventListener("click", () => {
         const root = document.documentElement;
         const metaThemeColor = document.querySelector('meta[name="theme-color"]');
@@ -58,7 +52,45 @@ document.addEventListener('DOMContentLoaded', function () {
 	 });
 });
 
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+        event.preventDefault();
+        document.querySelectorAll("dialog").forEach(dialog => {
+            if (dialog.open) {
+                closeDialog(dialog);
+            }
+        });
+    }
+})
+
+document.querySelectorAll(".close-dialog").forEach(closeDialogBtn => {
+    closeDialogBtn.addEventListener("click", (event) => {
+        let dialogElement = event.target.parentElement.parentElement;
+
+        if (dialogElement.classList.contains("close-dialog")) {
+            dialogElement = dialogElement.parentElement;
+        }
+
+        if (dialogElement.id == "dialog-3") {
+            player.pauseVideo();
+        }
+
+        closeDialog(dialogElement);
+    });
+});
+
+function closeDialog(dialog) {
+    dialog.classList.add("close");
+    setTimeout(function () {
+        dialog.classList.remove("close");
+        dialog.close();
+    }, 250);
+}
+
 function openDialog(dialogSelector) {
+    if (dialogSelector == "#dialog-3") {
+        player.playVideo();
+    }
     document.querySelector(dialogSelector).showModal();
 }
 
@@ -261,3 +293,29 @@ window.addEventListener('resize', () => {
     document.querySelector('.gallery').scrollLeft += 1;
     document.querySelector('.gallery').scrollLeft -= 1;
 });
+
+function onYouTubeIframeAPIReady() {
+    new YT.Player('player', {
+        videoId: 'vpzXg1jI5bc',
+        playerVars: {
+            autoplay: 0, // 1 = autoplay, 0 = no autoplay
+            controls: 1  // 1 = show controls
+        },
+        events: {
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange
+        }
+    });
+}
+
+let player;
+
+function onPlayerReady(event) {
+    console.log("Player ready!");
+    player = event.target;
+    // event.target.playVideo(); // optional: autoplay when ready
+}
+
+function onPlayerStateChange(event) {
+    console.log("State changed:", event.data);
+}

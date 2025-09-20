@@ -196,6 +196,11 @@ dialog {
         backdrop-filter: blur(5px);
     }
 
+    .dialog-container {
+        height: 100%;
+        width: 100%;
+    }
+
     button.close-dialog {
         background: transparent;
         position: absolute;
@@ -222,6 +227,38 @@ dialog {
             }
         }
     }
+
+    &[open] {
+        animation: openDialog 0.25s ease-in forwards;
+    }
+
+    &.close {
+        animation: closeDialog 0.25s ease-in forwards;
+    }
+}
+
+@keyframes openDialog {
+    0% {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes closeDialog {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.85);
+        opacity: 0;
+    }
 }
 
 #dialog-2 {
@@ -233,8 +270,6 @@ dialog {
     border: 0;
 
     .dialog-container {
-        height: 100%;
-        width: 100%;
         display: flex;
 
         > div {
@@ -249,6 +284,15 @@ dialog {
             padding: 1.5rem;
         }
     }
+}
+
+#dialog-3 {
+    width: 80vw;
+    max-width: 1366px;
+    max-height: 60vw;
+    aspect-ratio: 16/9;
+    padding: 0;
+    border: 0;
 }
 
 /* Components */
@@ -833,6 +877,14 @@ table {
     }
 }
 
+/* Video player */
+
+#player {
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+}
+
 /* Dark light mode animation */
 #mode-select {
     width: 50px;
@@ -1006,6 +1058,15 @@ footer {
     .item-4 {
         flex: 1 0 auto;
         width: 100%;
+    }
+
+    .button-container {
+        text-align: center;
+
+        button {
+            width: 80%;
+            margin: 0.5rem 0;
+        }
     }
 }
 
