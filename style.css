@@ -55,8 +55,7 @@
     --main-color: #4a4a4a;
     --secondairy-color: #4f3c52;
     --highlight-color: #fbe26c;
-    --popup-color: #EEEEEE;
-    --popup-highlight-color: #181818;
+    --dialog-background-color: #EEEEEE;
 }
 
 /* Containers */
@@ -186,15 +185,15 @@ header {
 }
 
 dialog {
-    background-color: var(--popup-color);
+    background-color: var(--dialog-background-color);
+    color: var(--text-color);
     border-radius: 1rem;
-    border: var(--popup-color) .2rem solid;
+    border: var(--dialog-background-color) .2rem solid;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     min-height: 25rem;
     padding: 1.5rem;
     overflow: visible;
     position: fixed;
-
     &::backdrop {
         background-color: rgba(0, 0, 0, 0.4);
         backdrop-filter: blur(5px);
@@ -285,6 +284,7 @@ dialog {
         }
 
         .dialog-content {
+            border-radius: 0 1rem 1rem 0;
             padding: 1.5rem;
         }
     }
@@ -1030,7 +1030,7 @@ table {
 footer {
     flex: 1;
     color: #FFFFFF;
-    background: var(--text-color);
+    background: var(--dialog-background-color);
 
     .footer {
         max-width: 1366px;

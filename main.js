@@ -14,14 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
 		  if (darkTheme) {
 				// https://www.color-hex.com/color-palette/1044414
 				switchThemeBtn.innerText = "Light theme";
-            metaThemeColor.setAttribute('content', '#1c1b16');
-            root.style.setProperty('--background-color', '#1c1b16');
-				root.style.setProperty('--text-color', '#ebeae5');
-				root.style.setProperty('--main-color', '#b6b093');
-				root.style.setProperty('--secondairy-color', '#b8a54b');
-				root.style.setProperty('--highlight-color', '#33312a');
-            root.style.setProperty('--popup-color', '#EEEEEE');
-            root.style.setProperty('--popup-highlight-color', '#181818');
+            metaThemeColor.setAttribute('content', '#1a1a1a');
+            root.style.setProperty('--background-color', '#1a1a1a');
+            root.style.setProperty('--text-color', '#e7e7e7');
+            root.style.setProperty('--main-color', '#f5f5f5');
+            root.style.setProperty('--secondairy-color', '#a8a8a8');
+            root.style.setProperty('--highlight-color', '#ffc300');
+            root.style.setProperty('--dialog-background-color', '#2A2A2A');
 
 				modeSelect.classList.remove("day");
 		  }
@@ -33,8 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				root.style.setProperty('--main-color', '#4a4a4a');
 				root.style.setProperty('--secondairy-color', '#4f3c52');
             root.style.setProperty('--highlight-color', '#fbe26c');
-            root.style.setProperty('--popup-color', '#EEEEEE');
-            root.style.setProperty('--popup-highlight-color', '#181818');
+            root.style.setProperty('--dialog-background-color', '#EEEEEE');
 
 				modeSelect.classList.add("day");
         }
