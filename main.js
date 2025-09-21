@@ -80,6 +80,9 @@ document.querySelectorAll(".close-dialog").forEach(closeDialogBtn => {
 });
 
 function closeDialog(dialog) {
+    const body = document.querySelector("body");
+    body.classList.remove("no-scroll");
+
     dialog.classList.add("close");
     setTimeout(function () {
         dialog.classList.remove("close");
@@ -88,6 +91,9 @@ function closeDialog(dialog) {
 }
 
 function openDialog(dialogSelector) {
+    const body = document.querySelector("body");
+    body.classList.add("no-scroll");
+
     if (dialogSelector == "#dialog-3") {
         player.playVideo();
     }

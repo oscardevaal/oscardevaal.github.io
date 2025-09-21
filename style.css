@@ -86,6 +86,10 @@ body {
     background-color: var(--background-color);
     min-height: 100vh;
     color: var(--text-color);
+
+    &.no-scroll {
+        overflow: hidden;
+    }
 }
 
 header {
@@ -189,7 +193,7 @@ dialog {
     min-height: 25rem;
     padding: 1.5rem;
     overflow: visible;
-    position: relative;
+    position: fixed;
 
     &::backdrop {
         background-color: rgba(0, 0, 0, 0.4);
@@ -1068,12 +1072,21 @@ footer {
             margin: 0.5rem 0;
         }
     }
+
+    .audio-item, .audio-description {
+        margin: auto;
+    }
+
+    #dialog-3 {
+        width: 80%;
+        max-width: unset;
+    }
 }
 
 /* Medium */
 @media (max-width: 768px) {
     header {
-        margin-bottom: 1rem;
+        margin: 0.25rem 0 1rem 0;
     }
 
     .item-6 {
