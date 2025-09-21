@@ -1080,6 +1080,10 @@ footer {
     #dialog-3 {
         width: 80%;
         max-width: unset;
+
+        #player {
+            width: 80vw;
+        }
     }
 }
 
