@@ -1152,4 +1152,8 @@ footer {
             }
         }
     }
+
+    #dialog-3 {
+        aspect-ratio: 9/16;
+    }
 }
