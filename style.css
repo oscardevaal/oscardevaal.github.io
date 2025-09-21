@@ -1082,7 +1082,8 @@ footer {
         max-width: unset;
 
         #player {
-            width: 80vw;
+            max-width: 100%;
+            height: auto;
         }
     }
 }
