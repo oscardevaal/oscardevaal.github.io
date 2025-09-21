@@ -1079,11 +1079,10 @@ footer {
 
     #dialog-3 {
         width: 80%;
-        max-width: unset;
+        max-width: 80vw;
 
         #player {
             max-width: 100%;
-            height: auto;
         }
     }
 }
