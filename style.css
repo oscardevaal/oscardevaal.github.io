@@ -1080,10 +1080,6 @@ footer {
     #dialog-3 {
         width: 80%;
         max-width: 80vw;
-
-        #player {
-            max-width: 100%;
-        }
     }
 }
 
@@ -1127,8 +1123,6 @@ footer {
     }
 
     dialog {
-        margin-bottom: 1rem;
-
         button.close-dialog {
             top: -3.5rem;
             right: -0.25rem;
