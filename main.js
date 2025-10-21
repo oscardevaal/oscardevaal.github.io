@@ -47,7 +47,61 @@ document.addEventListener('DOMContentLoaded', function () {
 				input.focus();
 				input.blur();
 		  }
-	 });
+    });
+
+    const tbody = document.querySelector("table tbody");
+
+    let draggedRow = null;
+    let placeholder;
+
+    // Create a visual placeholder row
+    function createPlaceholder(row) {
+        const ph = document.createElement("tr");
+        ph.classList.add("sortable-placeholder");
+        ph.style.height = `${row.offsetHeight}px`;
+        const colCount = row.children.length;
+        for (let i = 0; i < colCount; i++) {
+            const td = document.createElement("td");
+            td.style.border = "2px dashed #ccc";
+            td.innerHTML = "&nbsp;";
+            ph.appendChild(td);
+        }
+        return ph;
+    }
+
+    tbody.querySelectorAll("tr").forEach(row => {
+        row.draggable = true;
+
+        row.addEventListener("dragstart", (e) => {
+            draggedRow = row;
+            e.dataTransfer.effectAllowed = "move";
+            e.dataTransfer.setData("text/html", row.outerHTML);
+
+            placeholder = createPlaceholder(row);
+            row.classList.add("dragging");
+        });
+
+        row.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = "move";
+
+            const target = e.currentTarget;
+            if (target === draggedRow || target === placeholder) return;
+
+            const rect = target.getBoundingClientRect();
+            const next = (e.clientY - rect.top) / rect.height > 0.5;
+            tbody.insertBefore(placeholder, next ? target.nextSibling : target);
+        });
+
+        row.addEventListener("dragend", () => {
+            if (placeholder && placeholder.parentNode) {
+                tbody.insertBefore(draggedRow, placeholder);
+                placeholder.remove();
+            }
+            draggedRow.classList.remove("dragging");
+            draggedRow = null;
+        });
+    });
 });
 
 document.addEventListener('keydown', function (event) {
