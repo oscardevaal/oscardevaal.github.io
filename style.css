@@ -412,6 +412,34 @@ button {
     }
 }
 
+.ai-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    width: 100%;
+    height: 4rem;
+    border: 0.2rem solid #0000;
+    background: linear-gradient(var(--text-color), var(--text-color)) padding-box, linear-gradient( var(--angle), red, yellow, lime, aqua, blue, magenta, red ) border-box;
+    animation: 8s rotate linear infinite;
+
+    &:hover {
+        border: 0.25rem solid #0000;
+    }
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotate {
+    to {
+        --angle: 360deg;
+    }
+}
+
 /* Anchor link */
 
 a {
