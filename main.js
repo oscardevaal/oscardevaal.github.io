@@ -2,7 +2,7 @@ let darkTheme = false;
 
 document.addEventListener('DOMContentLoaded', function () {
 	 const switchThemeBtn = document.querySelector("#switchTheme");
-	 const modeSelect = document.querySelector("#mode-select");
+    const modeSelect = document.querySelector("#mode-select");
 
 	 switchThemeBtn.addEventListener("click", () => {
         const root = document.documentElement;
@@ -351,6 +351,32 @@ window.addEventListener('resize', () => {
     document.querySelector('.gallery').scrollLeft += 1;
     document.querySelector('.gallery').scrollLeft -= 1;
 });
+
+const carousel = document.getElementById('gallery');
+const dots = document.querySelectorAll('.dot');
+
+function carouselScrollMarker() {
+    const index = Math.round(carousel.scrollLeft / carousel.clientWidth);
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+}
+
+carouselScrollMarker();
+
+carousel.addEventListener('scroll', () => {
+    carouselScrollMarker();
+});
+
+dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+        carousel.scrollTo({
+            left: i * carousel.clientWidth,
+            behavior: 'smooth'
+        });
+    });
+});
+
 
 function onYouTubeIframeAPIReady() {
     new YT.Player('player', {

@@ -893,7 +893,7 @@ table {
     overflow: hidden;
     position: relative;
 
-    button {
+    > button {
         position: absolute;
         top: calc(50% - 2rem);
         background: transparent;
@@ -914,6 +914,36 @@ table {
         &:hover {
             svg path {
                 stroke: var(--highlight-color);
+            }
+        }
+    }
+
+    .indicators {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin-right: 15%;
+        margin-bottom: 1rem;
+        margin-left: 15%;
+        list-style: none;
+
+        button {
+            flex: 0 1 auto;
+            width: 2rem;
+            height: 0.25rem;
+            padding: 0;
+            margin-right: 3px;
+            margin-left: 3px;
+            text-indent: -999px;
+            cursor: pointer;
+
+            &.active {
+                background-color: var(--highlight-color);
             }
         }
     }
@@ -940,6 +970,14 @@ table {
             min-width: 100%;
             background-size: cover;
             background-position: center;
+
+            &:first-child {
+                border-radius: 1rem 0 0 1rem;
+            }
+
+            &:last-child {
+                border-radius: 0 1rem 1rem 0;
+            }
         }
     }
 }
@@ -1101,6 +1139,14 @@ footer {
         padding: 2rem;
         text-align: center;
     }
+
+    /*&:before {
+        display: inline-flex;
+        content: "";
+        width: 100vw;
+        height: 4rem;
+        background: linear-gradient(var(--background-color), var(--dialog-background-color));
+    }*/
 }
 
 /* Media queries */
