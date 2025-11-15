@@ -147,7 +147,7 @@ function openDialog(dialogSelector) {
     body.classList.add("no-scroll");
 
     if (dialogSelector == "#dialog-3") {
-        player.playVideo();
+        player?.playVideo();
     }
     document.querySelector(dialogSelector).showModal();
 }
@@ -377,29 +377,50 @@ dots.forEach((dot, i) => {
     });
 });
 
-
 function onYouTubeIframeAPIReady() {
-    new YT.Player('player', {
+    player = new YT.Player('player', {
         videoId: '8-Er-OnrLZE',
         playerVars: {
-            autoplay: 0, // 1 = autoplay, 0 = no autoplay
-            controls: 1  // 1 = show controls
+            autoplay: 0,
+            controls: 0,
+            modestbranding: 1,
+            rel: 0
         },
         events: {
-            onReady: onPlayerReady,
-            onStateChange: onPlayerStateChange
+            onReady: onReady
         }
     });
 }
 
 let player;
+const progress = document.getElementById('progress');
+const bar = document.getElementById('bar');
+const poster = document.getElementById('poster');
+const replay = document.getElementById('replay');
+let timer;
 
-function onPlayerReady(event) {
-    console.log("Player ready!");
-    player = event.target;
-    // event.target.playVideo(); // optional: autoplay when ready
+function onReady() {
+    progress.onclick = e => {
+        const r = progress.getBoundingClientRect();
+        const pct = (e.clientX - r.left) / r.width;
+        player.seekTo(player.getDuration() * pct, true);
+    };
+
+    timer = setInterval(updateProgress, 200);
 }
 
-function onPlayerStateChange(event) {
-    console.log("State changed:", event.data);
+function updateProgress() {
+    if (!player || player.getDuration() <= 0) return;
+    const pct = player.getCurrentTime() / player.getDuration() * 100;
+    bar.style.width = pct + "%";
+
+    if (pct === 100) {
+        poster.classList.add("replay");
+    } else {
+        poster.classList.remove("replay");
+    }
 }
+
+replay.addEventListener("click", () => {
+    player.playVideo();
+});
